@@ -12,3 +12,8 @@ add_subdirectory(lib/external/GLFW)
 add_subdirectory(lib/external/GLEW)
 add_executable(${PROJECT_NAME} Starfields.c)
 target_link_libraries(${PROJECT_NAME} ${OPENGL_LIBRARIES} glfw libglew_static)
+
+# set startup project for MSVC builds
+if (MSVC)
+    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME})
+endif()
